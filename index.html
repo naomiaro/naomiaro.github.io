@@ -68,7 +68,7 @@
               <div class="card">
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4"><h5>Timepoint Selection</h5></span>
-                  <img src="img/timepoint.png">
+                  <input id="timepoint">
                   <p class="flow-text">Enhance input elements with easy key entry and validation for time durations. Input numbers directly or increment and decrement with up and down arrow keys. Rollover is automatically handled.</p>
                 </div>
                 <div class="card-action">
@@ -85,5 +85,18 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="js/timepoint-selection.var.js"></script>
+    <script type="text/javascript">
+      selection(document.getElementById("timepoint"), {
+        'durationFormat': 'dd:hh:mm:ss',
+        'useAbbr': true,
+        'abbr': {
+          'dd': 'days ',
+          'hh': 'h ',
+          'mm': 'm ',
+          'ss': 's'
+        }
+      });
+    </script>
   </body>
 </html>
