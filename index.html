@@ -35,9 +35,47 @@
     </nav>
     <main>
       <section class="hero" id="hero">
-        <div class="container">
-          <h1>Naomi Aro</h1>
+        <!-- Decorative SVG layers (aria-hidden) -->
+        <div class="hero-bg" aria-hidden="true">
+          <svg class="hero-eq" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <rect class="eq-bar" x="4"  y="20" width="8" height="60" />
+            <rect class="eq-bar" x="16" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="28" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="40" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="52" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="64" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="76" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="88" y="20" width="8" height="60" />
+          </svg>
+          <svg class="hero-circle" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="80" fill="none" stroke="var(--primary)" stroke-width="0.5" opacity="0.2" />
+            <circle cx="100" cy="100" r="60" fill="none" stroke="var(--primary)" stroke-width="0.5" opacity="0.3" class="pulse-ring" />
+          </svg>
+        </div>
+
+        <div class="container hero-content">
+          <!-- VexFlow staff target (rendered in Task 7) -->
+          <div class="hero-staff" id="name-staff" aria-hidden="true"></div>
+
+          <!-- Clickable name letters -->
+          <h1 class="hero-name">
+            <button type="button" class="name-letter" data-note-index="0" aria-label="Play A3">N</button>
+            <button type="button" class="name-letter" data-note-index="1" aria-label="Play C4">A</button>
+            <button type="button" class="name-letter" data-note-index="2" aria-label="Play D4">O</button>
+            <button type="button" class="name-letter" data-note-index="3" aria-label="Play E4">M</button>
+            <button type="button" class="name-letter" data-note-index="4" aria-label="Play G4">I</button>
+            <span class="name-space" aria-hidden="true">&nbsp;</span>
+            <button type="button" class="name-letter" data-note-index="5" aria-label="Play A4">A</button>
+            <button type="button" class="name-letter" data-note-index="6" aria-label="Play C5">R</button>
+            <button type="button" class="name-letter" data-note-index="7" aria-label="Play D5">O</button>
+          </h1>
+
           <p class="hero-tagline">audio on the web</p>
+
+          <button type="button" class="play-button" id="play-button" aria-pressed="false">
+            <span class="play-button-icon" aria-hidden="true">▶</span>
+            <span class="play-button-label">PLAY</span>
+          </button>
         </div>
       </section>
 
@@ -150,6 +188,18 @@
         </ul>
       </div>
     </footer>
+    <script>
+      (function () {
+        var btn = document.getElementById('play-button');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          var pressed = btn.getAttribute('aria-pressed') === 'true';
+          btn.setAttribute('aria-pressed', pressed ? 'false' : 'true');
+          btn.querySelector('.play-button-icon').textContent = pressed ? '▶' : '■';
+          btn.querySelector('.play-button-label').textContent = pressed ? 'PLAY' : 'STOP';
+        });
+      })();
+    </script>
     <script>
       document.querySelector('.footer-year').textContent = new Date().getFullYear();
     </script>
