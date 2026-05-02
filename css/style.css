@@ -194,6 +194,33 @@ button {
   color: var(--primary);
 }
 
+/* Mobile menu toggle — hidden on desktop, shown on mobile via media query */
+.navbar-toggle {
+  display: none;
+  align-items: center;
+  background: transparent;
+  border: 2px solid var(--text-secondary);
+  color: var(--text);
+  font-family: var(--font-base);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.navbar-toggle:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.navbar-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
 /* ============================================
    FOOTER
    ============================================ */
@@ -601,15 +628,48 @@ button {
   }
 
   .navbar-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-    padding: 0.75rem 0;
+    /* Brand on the left, MENU toggle on the right, single row */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
   }
 
+  .navbar-toggle {
+    display: inline-flex;
+  }
+
+  /* Menu collapses into a dropdown below the navbar */
   .navbar-links {
-    flex-wrap: wrap;
-    gap: 1rem;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.25rem var(--gutter);
+    background: var(--navbar-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .navbar.is-open .navbar-links {
+    display: flex;
+  }
+
+  .navbar.is-open .navbar-links li {
+    border-top: 1px solid var(--border);
+  }
+
+  .navbar.is-open .navbar-links li:first-child {
+    border-top: none;
+  }
+
+  .navbar.is-open .navbar-links a {
+    display: block;
+    padding: 0.85rem 0;
+    font-size: 0.95rem;
   }
 
   .hero {

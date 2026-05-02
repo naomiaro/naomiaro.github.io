@@ -24,13 +24,16 @@
     <nav class="navbar" aria-label="Primary">
       <div class="container navbar-inner">
         <a href="/" class="navbar-brand">NAOMI ARO</a>
-        <ul class="navbar-links">
+        <ul class="navbar-links" id="navbar-menu">
           <li><a href="https://github.com/naomiaro" target="_blank" rel="noopener">github</a></li>
           <li><a href="https://twitter.com/naomiaro" target="_blank" rel="noopener">twitter</a></li>
           <li><a href="https://linkedin.com/in/naomiaro" target="_blank" rel="noopener">linkedin</a></li>
           <li><a href="https://naomiaro.hashnode.dev" target="_blank" rel="noopener">blog</a></li>
           <li><a href="mailto:naomiaro@gmail.com">email</a></li>
         </ul>
+        <button class="navbar-toggle" type="button" aria-expanded="false" aria-controls="navbar-menu">
+          <span class="navbar-toggle-label">MENU</span>
+        </button>
       </div>
     </nav>
     <main>
@@ -210,6 +213,35 @@
     </script>
     <script>
       document.querySelector('.footer-year').textContent = new Date().getFullYear();
+    </script>
+    <script>
+      (function () {
+        var nav = document.querySelector('.navbar');
+        var toggle = document.querySelector('.navbar-toggle');
+        var label = toggle && toggle.querySelector('.navbar-toggle-label');
+        if (!nav || !toggle || !label) return;
+
+        function setOpen(open) {
+          nav.classList.toggle('is-open', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          label.textContent = open ? 'CLOSE' : 'MENU';
+        }
+
+        toggle.addEventListener('click', function () {
+          setOpen(!nav.classList.contains('is-open'));
+        });
+
+        nav.querySelectorAll('.navbar-links a').forEach(function (a) {
+          a.addEventListener('click', function () { setOpen(false); });
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+            setOpen(false);
+            toggle.focus();
+          }
+        });
+      })();
     </script>
   </body>
 </html>
