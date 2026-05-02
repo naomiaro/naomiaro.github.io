@@ -56,10 +56,10 @@ export function renderNameStaff(container) {
     return el;
   });
 
-  // Fallback: if any notehead lookup failed, grab .vf-StaveNote groups in document order.
-  // (VexFlow's prefix() preserves PascalCase from CATEGORY constants.)
+  // Fallback: if getSVGElement() ever returns null, grab .vf-stavenote groups
+  // in document order. VexFlow 4.2.5 emits lowercase class names.
   if (renderedNotes.some((el) => !el)) {
-    renderedNotes = Array.from(container.querySelectorAll('.vf-StaveNote'));
+    renderedNotes = Array.from(container.querySelectorAll('.vf-stavenote'));
   }
 }
 
