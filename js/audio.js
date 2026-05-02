@@ -10,6 +10,7 @@ const LETTER_NOTES = ['A3', 'C4', 'D4', 'E4', 'G4', 'A4', 'C5', 'D5'];
 
 // Module-scoped state
 let started = false;
+let initializing = false;
 let analyser = null;
 let nameSynth = null;
 let onLetterPlayCallback = null;
@@ -20,6 +21,8 @@ let onLetterPlayCallback = null;
  */
 async function ensureAudio() {
   if (started) return;
+  if (initializing) return;
+  initializing = true;
   await Tone.start();
 
   Tone.getTransport().bpm.value = 128;
@@ -97,6 +100,7 @@ async function ensureAudio() {
   nameSynth.connect(reverb);
 
   started = true;
+  initializing = false;
 }
 
 /**
@@ -104,19 +108,26 @@ async function ensureAudio() {
  * update aria-pressed and label, and ensure audio is initialized first.
  */
 function wirePlayButton(button) {
+  let toggling = false;
   button.addEventListener('click', async () => {
-    await ensureAudio();
-    const t = Tone.getTransport();
-    if (t.state === 'started') {
-      t.stop();
-      button.setAttribute('aria-pressed', 'false');
-      button.querySelector('.play-button-icon').textContent = '▶';
-      button.querySelector('.play-button-label').textContent = 'PLAY';
-    } else {
-      t.start('+0.05');
-      button.setAttribute('aria-pressed', 'true');
-      button.querySelector('.play-button-icon').textContent = '■';
-      button.querySelector('.play-button-label').textContent = 'STOP';
+    if (toggling) return;
+    toggling = true;
+    try {
+      await ensureAudio();
+      const t = Tone.getTransport();
+      if (t.state === 'started') {
+        t.stop();
+        button.setAttribute('aria-pressed', 'false');
+        button.querySelector('.play-button-icon').textContent = '▶';
+        button.querySelector('.play-button-label').textContent = 'PLAY';
+      } else {
+        t.start('+0.05');
+        button.setAttribute('aria-pressed', 'true');
+        button.querySelector('.play-button-icon').textContent = '■';
+        button.querySelector('.play-button-label').textContent = 'STOP';
+      }
+    } finally {
+      toggling = false;
     }
   });
 }
@@ -156,7 +167,7 @@ function wireNameLetters(buttons) {
       const idx = parseInt(btn.dataset.noteIndex, 10);
       const note = LETTER_NOTES[idx];
       if (!note || !nameSynth) return;
-      nameSynth.triggerAttackRelease(note, '0.5');
+      nameSynth.triggerAttackRelease(note, 0.5);
 
       btn.classList.add('active');
       setTimeout(() => btn.classList.remove('active'), 350);
