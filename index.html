@@ -188,17 +188,9 @@
         </ul>
       </div>
     </footer>
-    <script>
-      (function () {
-        var btn = document.getElementById('play-button');
-        if (!btn) return;
-        btn.addEventListener('click', function () {
-          var pressed = btn.getAttribute('aria-pressed') === 'true';
-          btn.setAttribute('aria-pressed', pressed ? 'false' : 'true');
-          btn.querySelector('.play-button-icon').textContent = pressed ? '▶' : '■';
-          btn.querySelector('.play-button-label').textContent = pressed ? 'PLAY' : 'STOP';
-        });
-      })();
+    <script type="module">
+      import { init as initAudio } from './js/audio.js';
+      document.addEventListener('DOMContentLoaded', () => initAudio());
     </script>
     <script>
       document.querySelector('.footer-year').textContent = new Date().getFullYear();
