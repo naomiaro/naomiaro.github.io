@@ -24,7 +24,8 @@ async function ensureAudio() {
 
   Tone.getTransport().bpm.value = 128;
 
-  // Master FX bus — compressor → reverb → analyser → destination
+  // Master FX bus — compressor → reverb → masterGain → destination,
+  // with a side-tap from masterGain to the FFT analyser for visualization.
   const reverb = new Tone.Reverb({ decay: 4, wet: 0.2 });
   await reverb.generate();
   const compressor = new Tone.Compressor(-18, 4);
