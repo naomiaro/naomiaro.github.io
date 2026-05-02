@@ -621,21 +621,9 @@ button {
 }
 
 /* ============================================
-   MOBILE
+   NAVBAR — collapse to MENU dropdown only on small phones
    ============================================ */
-@media (max-width: 768px) {
-  :root {
-    --gutter: 1.25rem;
-  }
-
-  .navbar-inner {
-    /* Brand on the left, MENU toggle on the right, single row */
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
+@media (max-width: 540px) {
   .navbar-toggle {
     display: inline-flex;
   }
@@ -671,6 +659,20 @@ button {
     display: block;
     padding: 0.85rem 0;
     font-size: 0.95rem;
+  }
+}
+
+/* ============================================
+   MOBILE — sections + hero scale down at the tablet breakpoint
+   ============================================ */
+@media (max-width: 768px) {
+  :root {
+    --gutter: 1.25rem;
+  }
+
+  /* Tighter navbar gap so the inline links pack closer when narrow */
+  .navbar-links {
+    gap: 1rem;
   }
 
   .hero {
