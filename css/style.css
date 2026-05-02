@@ -246,15 +246,10 @@ button {
   font-family: var(--font-mono);
 }
 
-.footer-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.footer-links a {
+.footer-support {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: var(--text-secondary);
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -262,8 +257,13 @@ button {
   transition: color 0.2s ease;
 }
 
-.footer-links a:hover {
+.footer-support:hover {
   color: var(--primary);
+}
+
+.footer-support-icon {
+  font-size: 1.05rem;
+  line-height: 1;
 }
 
 /* ============================================
