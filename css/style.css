@@ -560,3 +560,32 @@ button {
 .numbered-section p a:hover {
   background-size: 100% 2px;
 }
+
+/* ============================================
+   VEXFLOW STAFF
+   ============================================ */
+.hero-staff svg {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Default note color: warm amber on dark */
+.hero-staff path,
+.hero-staff text {
+  fill: var(--text-secondary);
+  stroke: var(--text-secondary);
+}
+
+/* Stave lines a touch dimmer */
+.hero-staff .vf-stave path {
+  stroke: var(--border-strong);
+}
+
+/* Active notehead: glow green for 400ms */
+.hero-staff g.active path,
+.hero-staff g.active {
+  fill: var(--primary);
+  stroke: var(--primary);
+  filter: drop-shadow(0 0 10px var(--primary));
+  transition: fill 0.1s ease, stroke 0.1s ease, filter 0.1s ease;
+}

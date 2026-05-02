@@ -190,7 +190,22 @@
     </footer>
     <script type="module">
       import { init as initAudio } from './js/audio.js';
-      document.addEventListener('DOMContentLoaded', () => initAudio());
+      import { renderNameStaff, highlight } from './js/notation.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const staffContainer = document.getElementById('name-staff');
+        renderNameStaff(staffContainer);
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => renderNameStaff(staffContainer), 150);
+        });
+
+        initAudio({
+          onLetterPlay: (letterIndex) => highlight(letterIndex),
+        });
+      });
     </script>
     <script>
       document.querySelector('.footer-year').textContent = new Date().getFullYear();
