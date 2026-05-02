@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://naomiaro.github.io/sitemap.xml
+Sitemap: https://naomiaro.com/sitemap.xml
