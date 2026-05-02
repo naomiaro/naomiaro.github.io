@@ -354,21 +354,21 @@ button {
   border-radius: 0;
 }
 
-.name-letter:hover,
-.name-letter:focus-visible {
+.name-letter:hover {
   color: var(--primary);
   outline: none;
+}
+
+.name-letter:focus-visible {
+  color: var(--primary);
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
 }
 
 .name-letter.active {
   color: var(--primary-light);
   transform: translateY(-4px);
   text-shadow: 0 0 40px var(--primary), 0 0 16px var(--primary);
-}
-
-.name-letter:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 4px;
 }
 
 .hero-tagline {
