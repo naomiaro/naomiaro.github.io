@@ -138,10 +138,10 @@ button {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Container helper — full-width with side gutters; specific content
-   inside (e.g. .about-bio) caps its own readable line length. */
+/* Centered content container for sections + hero. Navbar and footer
+   use their own full-width inner so the brand can hug the page edge. */
 .container {
-  width: 100%;
+  max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
@@ -163,6 +163,7 @@ button {
   align-items: center;
   justify-content: space-between;
   min-height: 64px;
+  padding: 0 var(--gutter);
 }
 
 .navbar-brand {
@@ -237,6 +238,7 @@ button {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
+  padding: 0 var(--gutter);
 }
 
 .footer-copy {
@@ -508,7 +510,7 @@ button {
    ============================================ */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 500px));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
 }
 
