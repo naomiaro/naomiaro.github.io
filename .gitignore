@@ -3,5 +3,7 @@
 # Local-only files (Claude Code artifacts, scratch screenshots)
 CLAUDE.md
 .playwright-mcp/
-/staff-*.png
-/wp-card-*.png
+
+# Scratch screenshots at repo root (tracked images live in img/)
+/*.png
+/*.jpg
