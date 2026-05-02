@@ -231,6 +231,7 @@ button {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
