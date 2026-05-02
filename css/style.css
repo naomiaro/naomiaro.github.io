@@ -146,6 +146,50 @@ button {
 }
 
 /* ============================================
+   SCROLL PROGRESS BAR
+   Thin green line at the top that fills with scroll progress while
+   audio is playing — uses the modern animation-timeline: scroll() API
+   with a @supports guard so browsers without it just skip the effect.
+   ============================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+body.is-playing .scroll-progress {
+  opacity: 1;
+}
+
+@supports (animation-timeline: scroll()) {
+  body.is-playing .scroll-progress {
+    animation: scroll-fill linear;
+    animation-timeline: scroll(root);
+  }
+
+  @keyframes scroll-fill {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress {
+    animation: none !important;
+    transform: scaleX(0) !important;
+  }
+}
+
+/* ============================================
    NAVBAR
    ============================================ */
 .navbar {

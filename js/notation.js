@@ -40,9 +40,13 @@ export function renderNameStaff(container) {
   stave.addClef('treble').addTimeSignature('4/4');
   stave.setContext(ctx).draw();
 
-  const notes = STAFF_KEYS.map((key) =>
-    new StaveNote({ keys: [key], duration: '8' })
-  );
+  const notes = STAFF_KEYS.map((key, i) => {
+    const opts = { keys: [key], duration: '8' };
+    // Force the top two noteheads (C5, D5) stem-down so the staff
+    // doesn't crowd above the top line. -1 = down in VexFlow.
+    if (i >= 6) opts.stem_direction = -1;
+    return new StaveNote(opts);
+  });
 
   const voice = new Voice({ num_beats: 4, beat_value: 4 });
   voice.addTickables(notes);

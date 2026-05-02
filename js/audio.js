@@ -123,11 +123,13 @@ function wirePlayButton(button) {
       const t = Tone.getTransport();
       if (t.state === 'started') {
         t.stop();
+        document.body.classList.remove('is-playing');
         button.setAttribute('aria-pressed', 'false');
         button.querySelector('.play-button-icon').textContent = '▶';
         button.querySelector('.play-button-label').textContent = 'PLAY';
       } else {
         t.start('+0.05');
+        document.body.classList.add('is-playing');
         button.setAttribute('aria-pressed', 'true');
         button.querySelector('.play-button-icon').textContent = '■';
         button.querySelector('.play-button-label').textContent = 'STOP';
