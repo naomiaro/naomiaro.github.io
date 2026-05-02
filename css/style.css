@@ -239,7 +239,7 @@ button {
 }
 
 /* ============================================
-   HERO (placeholder styling — Task 4 fills it out)
+   HERO
    ============================================ */
 .hero {
   padding: 8rem 0 6rem;
@@ -389,7 +389,7 @@ button {
 /* ============================================
    LINK UNDERLINE GROW (in body content only)
    ============================================ */
-.numbered-section a:not(.project-badge):not(.project-links a) {
+.numbered-section p a {
   background-image: linear-gradient(var(--primary), var(--primary));
   background-size: 0% 2px;
   background-repeat: no-repeat;
@@ -398,6 +398,6 @@ button {
   padding-bottom: 2px;
 }
 
-.numbered-section a:not(.project-badge):not(.project-links a):hover {
+.numbered-section p a:hover {
   background-size: 100% 2px;
 }
