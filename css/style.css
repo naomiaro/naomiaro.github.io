@@ -589,3 +589,89 @@ button {
   filter: drop-shadow(0 0 10px var(--primary));
   transition: fill 0.1s ease, stroke 0.1s ease, filter 0.1s ease;
 }
+
+/* ============================================
+   MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+  :root {
+    --gutter: 1.25rem;
+  }
+
+  .navbar-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+  }
+
+  .navbar-links {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero {
+    min-height: 70vh;
+    padding: 4rem 0 3rem;
+  }
+
+  .hero-name {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    gap: 0.05em;
+  }
+
+  .hero-staff {
+    max-width: 100%;
+  }
+
+  .hero-eq { width: 40%; }
+  .hero-circle { width: 30%; }
+
+  .section-header {
+    flex-wrap: wrap;
+  }
+
+  .section-subtitle {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .eq-bar,
+  .pulse-ring,
+  .name-letter,
+  .play-button,
+  .project-card,
+  .hero-staff g.active path,
+  .hero-staff g.active {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .name-letter.active {
+    color: var(--primary-light);
+    transform: none;
+    text-shadow: none;
+  }
+
+  .hero-staff g.active {
+    filter: none;
+  }
+}
