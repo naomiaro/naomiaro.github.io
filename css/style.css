@@ -335,6 +335,13 @@ button {
   line-height: 1;
 }
 
+.name-group {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  gap: inherit;
+}
+
 .name-space {
   width: 0.6em;
 }
