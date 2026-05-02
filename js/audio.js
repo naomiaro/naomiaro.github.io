@@ -14,6 +14,12 @@ let initializing = false;
 let analyser = null;
 let nameSynth = null;
 let onLetterPlayCallback = null;
+// Wall-clock timestamp of the last letter click (performance.now()).
+// Used to keep the FFT loop driving the equalizer bars for a short
+// window after a click so letters feel like an instrument even when
+// the transport is stopped.
+let lastSynthEvent = 0;
+const SYNTH_TAIL_MS = 1800;
 
 /**
  * Lazily start the AudioContext on the first user gesture, build the
@@ -143,8 +149,10 @@ function startFftLoop(eqBars) {
   let wasPlaying = false;
 
   function tick() {
-    const isPlaying = started && analyser && Tone.getTransport().state === 'started';
-    if (isPlaying) {
+    const transportPlaying = Tone.getTransport().state === 'started';
+    const recentSynth = (performance.now() - lastSynthEvent) < SYNTH_TAIL_MS;
+    const audioActive = started && analyser && (transportPlaying || recentSynth);
+    if (audioActive) {
       const values = analyser.getValue(); // Float32Array, dB scale (-100..0)
       eqBars.forEach((bar, i) => {
         const db = values[i] ?? -100;
@@ -153,14 +161,14 @@ function startFftLoop(eqBars) {
         bar.style.transform = `scaleY(${norm.toFixed(3)})`;
       });
     } else if (wasPlaying) {
-      // Playback just stopped: clear inline overrides so the CSS
+      // Audio just went silent: clear inline overrides so the CSS
       // pulse animation can resume from its idle state.
       eqBars.forEach((bar) => {
         bar.style.animation = '';
         bar.style.transform = '';
       });
     }
-    wasPlaying = isPlaying;
+    wasPlaying = audioActive;
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
@@ -179,6 +187,7 @@ function wireNameLetters(buttons) {
       const note = LETTER_NOTES[idx];
       if (!note || !nameSynth) return;
       nameSynth.triggerAttackRelease(note, 0.5);
+      lastSynthEvent = performance.now();
 
       btn.classList.add('active');
       setTimeout(() => btn.classList.remove('active'), 350);
