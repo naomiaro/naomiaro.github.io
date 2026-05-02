@@ -2,7 +2,7 @@
 // VexFlow staff renderer for the clickable name. Renders 8 noteheads
 // matching the LETTER_NOTES sequence (A-minor pentatonic ascending).
 
-import VF from 'https://cdn.jsdelivr.net/npm/vexflow@4/+esm';
+import VF from 'https://cdn.jsdelivr.net/npm/vexflow@4.2.5/+esm';
 
 // Pitch + octave encoded in VexFlow's `key` format ("a/3", "c/4", ...)
 // Order matches data-note-index 0..7 in index.html.
@@ -49,16 +49,17 @@ export function renderNameStaff(container) {
   voice.draw(ctx, stave);
 
   // Tag each notehead with its index for later highlight.
-  // VexFlow attaches the rendered <g> via .getAttribute('el').
+  // VexFlow v4 exposes the rendered <g> via getSVGElement().
   renderedNotes = notes.map((note, i) => {
-    const el = note.getAttribute('el');
+    const el = note.getSVGElement();
     if (el) el.dataset.noteIndex = String(i);
     return el;
   });
 
-  // Fallback: if VexFlow didn't expose `el`, grab .vf-stavenote groups in document order.
+  // Fallback: if any notehead lookup failed, grab .vf-StaveNote groups in document order.
+  // (VexFlow's prefix() preserves PascalCase from CATEGORY constants.)
   if (renderedNotes.some((el) => !el)) {
-    renderedNotes = Array.from(container.querySelectorAll('.vf-stavenote'));
+    renderedNotes = Array.from(container.querySelectorAll('.vf-StaveNote'));
   }
 }
 

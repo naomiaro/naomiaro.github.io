@@ -577,7 +577,7 @@ button {
 }
 
 /* Stave lines a touch dimmer */
-.hero-staff .vf-stave path {
+.hero-staff .vf-Stave path {
   stroke: var(--border-strong);
 }
 
