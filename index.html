@@ -21,9 +21,35 @@
     ></script>
   </head>
   <body>
+    <nav class="navbar">
+      <div class="container navbar-inner">
+        <a href="/" class="navbar-brand">NAOMI ARO</a>
+        <ul class="navbar-links">
+          <li><a href="https://github.com/naomiaro" rel="noopener">github</a></li>
+          <li><a href="https://twitter.com/naomiaro" rel="noopener">twitter</a></li>
+          <li><a href="https://linkedin.com/in/naomiaro" rel="noopener">linkedin</a></li>
+          <li><a href="https://naomiaro.hashnode.dev" rel="noopener">blog</a></li>
+          <li><a href="mailto:naomiaro@gmail.com">email</a></li>
+        </ul>
+      </div>
+    </nav>
     <main>
       <h1>Naomi Aro</h1>
       <p>Site under construction — Berlin Underground edition incoming.</p>
     </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span class="footer-copy">© <span class="footer-year"></span> Naomi Aro</span>
+        <ul class="footer-links">
+          <li><a href="https://github.com/naomiaro" rel="noopener">github</a></li>
+          <li><a href="https://twitter.com/naomiaro" rel="noopener">twitter</a></li>
+          <li><a href="https://linkedin.com/in/naomiaro" rel="noopener">linkedin</a></li>
+          <li><a href="mailto:naomiaro@gmail.com">email</a></li>
+        </ul>
+      </div>
+    </footer>
+    <script>
+      document.querySelector('.footer-year').textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
