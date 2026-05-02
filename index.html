@@ -1,164 +1,284 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="google-adsense-account" content="ca-pub-2823804660968229">
+    <meta name="description" content="Naomi Aro — field notes from the edge of web audio. Waveform Playlist, Mastering Tone.js, openDAW experiments." />
+    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="google-adsense-account" content="ca-pub-2823804660968229" />
+    <title>Naomi Aro — field notes from the edge of web audio</title>
+    <link rel="canonical" href="https://naomiaro.github.io/" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-    <title>Naomi Aro</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Naomi Aro" />
+    <meta property="og:title" content="Naomi Aro — field notes from the edge of web audio" />
+    <meta property="og:description" content="Field notes from the edge of web audio. Maintainer of Waveform Playlist, author of Mastering Tone.js, and a growing pile of openDAW experiments." />
+    <meta property="og:url" content="https://naomiaro.github.io/" />
+    <meta property="og:image" content="https://naomiaro.github.io/img/social-card.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Naomi Aro — field notes from the edge of web audio. Hero image with a treble-clef staff over the name in muted red, on a near-black background." />
 
-    <link
-      rel="shortcut icon"
-      href="https://naomiaro.github.io/favicon.ico"
-      type="image/x-icon"
-    />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@naomiaro" />
+    <meta name="twitter:creator" content="@naomiaro" />
+    <meta name="twitter:title" content="Naomi Aro — field notes from the edge of web audio" />
+    <meta name="twitter:description" content="Field notes from the edge of web audio. Maintainer of Waveform Playlist, author of Mastering Tone.js, and a growing pile of openDAW experiments." />
+    <meta name="twitter:image" content="https://naomiaro.github.io/img/social-card.png" />
+    <meta name="twitter:image:alt" content="Naomi Aro — field notes from the edge of web audio. Hero image with a treble-clef staff over the name in muted red, on a near-black background." />
+
+    <!-- Structured data: Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Naomi Aro",
+        "url": "https://naomiaro.github.io/",
+        "image": "https://naomiaro.github.io/img/social-card.png",
+        "sameAs": [
+          "https://github.com/naomiaro",
+          "https://twitter.com/naomiaro",
+          "https://linkedin.com/in/naomiaro"
+        ],
+        "knowsAbout": [
+          "Web Audio API",
+          "Tone.js",
+          "openDAW",
+          "Audio software engineering",
+          "JavaScript",
+          "TypeScript",
+          "React"
+        ]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     />
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="7a96e25f-13c5-4514-8f9b-71f74c8e3f5e"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      data-goatcounter="https://naomiaro.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
   </head>
-
   <body>
-    <div class="container">
-      <header>
-        <h1>Naomi Aro</h1>
-        <div class="row">
-          <div class="col s12 m6">
-            <div class="card blue-grey darken-2">
-              <div class="card-content white-text">
-                <span class="card-title">Hello I'm Naomi!</span>
-                <p class="light">
-                  I'm a Full Stack Developer - focusing in the front end.
+    <nav class="navbar" aria-label="Primary">
+      <div class="navbar-inner">
+        <a href="/" class="navbar-brand">NAOMI ARO</a>
+        <ul class="navbar-links" id="navbar-menu">
+          <li><a href="https://github.com/naomiaro" target="_blank" rel="noopener">github</a></li>
+          <li><a href="https://twitter.com/naomiaro" target="_blank" rel="noopener">twitter</a></li>
+          <li><a href="https://linkedin.com/in/naomiaro" target="_blank" rel="noopener">linkedin</a></li>
+          <li><a href="mailto:naomiaro@gmail.com">email</a></li>
+        </ul>
+        <button class="navbar-toggle" type="button" aria-expanded="false" aria-controls="navbar-menu">
+          <span class="navbar-toggle-label">MENU</span>
+        </button>
+      </div>
+    </nav>
+    <main>
+      <section class="hero" id="hero">
+        <!-- Decorative SVG layers (aria-hidden) -->
+        <div class="hero-bg" aria-hidden="true">
+          <svg class="hero-eq" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <rect class="eq-bar" x="4"  y="20" width="8" height="60" />
+            <rect class="eq-bar" x="16" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="28" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="40" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="52" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="64" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="76" y="20" width="8" height="60" />
+            <rect class="eq-bar" x="88" y="20" width="8" height="60" />
+          </svg>
+          <svg class="hero-circle" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="80" fill="none" stroke="var(--primary)" stroke-width="0.5" opacity="0.2" />
+            <circle cx="100" cy="100" r="60" fill="none" stroke="var(--primary)" stroke-width="0.5" opacity="0.3" class="pulse-ring" />
+          </svg>
+        </div>
+
+        <div class="container hero-content">
+          <!-- VexFlow staff target (rendered in Task 7) -->
+          <div class="hero-staff" id="name-staff" aria-hidden="true"></div>
+
+          <!-- Clickable name letters -->
+          <h1 class="hero-name" aria-label="Naomi Aro">
+            <span class="name-group">
+              <button type="button" class="name-letter" data-note-index="0" aria-label="Play A3">N</button>
+              <button type="button" class="name-letter" data-note-index="1" aria-label="Play C4">A</button>
+              <button type="button" class="name-letter" data-note-index="2" aria-label="Play D4">O</button>
+              <button type="button" class="name-letter" data-note-index="3" aria-label="Play E4">M</button>
+              <button type="button" class="name-letter" data-note-index="4" aria-label="Play G4">I</button>
+            </span>
+            <span class="name-space" aria-hidden="true">&nbsp;</span>
+            <span class="name-group">
+              <button type="button" class="name-letter" data-note-index="5" aria-label="Play A4">A</button>
+              <button type="button" class="name-letter" data-note-index="6" aria-label="Play C5">R</button>
+              <button type="button" class="name-letter" data-note-index="7" aria-label="Play D5">O</button>
+            </span>
+          </h1>
+
+          <p class="hero-tagline">field notes from the edge of web audio</p>
+
+          <button type="button" class="play-button" id="play-button" aria-pressed="false">
+            <span class="play-button-icon" aria-hidden="true">▶</span>
+            <span class="play-button-label">PLAY</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="numbered-section" id="about">
+        <div class="container">
+          <header class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">About</h2>
+          </header>
+          <p class="about-bio">
+            The browser, but as a DAW —
+            <a href="https://github.com/naomiaro/waveform-playlist" target="_blank" rel="noopener">Waveform Playlist</a>,
+            <em><a href="https://masteringtonejs.com/" target="_blank" rel="noopener">Mastering Tone.js</a></em>,
+            and a growing pile of openDAW experiments.
+          </p>
+        </div>
+      </section>
+
+      <section class="numbered-section" id="projects">
+        <div class="container">
+          <header class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Projects</h2>
+          </header>
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-image">
+                <img src="img/waveform-playlist.png" alt="Waveform Playlist multitrack editor screenshot" />
+              </div>
+              <div class="project-body">
+                <h3>Waveform Playlist</h3>
+                <p>
+                  Multi-track Web Audio editor built with React and Tone.js, also
+                  published as Web Components. Canvas waveforms, cues, fades, effects,
+                  recording, annotations, AudioBuffer / WAV export. Inspired by Audacity.
                 </p>
+                <div class="project-links">
+                  <a href="https://naomiaro.github.io/waveform-playlist/" target="_blank" rel="noopener">Project site</a>
+                  <a href="https://github.com/naomiaro/waveform-playlist" target="_blank" rel="noopener">Github</a>
+                </div>
               </div>
-              <div class="card-action">
-                <a href="https://github.com/naomiaro">Github</a>
-                <a href="https://twitter.com/naomiaro">Twitter</a>
-                <a href="https://linkedin.com/in/naomiaro">LinkedIn</a>
-                <a href="mailto:naomiaro@gmail.com">Email</a>
+            </article>
+
+            <article class="project-card">
+              <div class="project-image project-image--placeholder" aria-hidden="true">
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                  <rect x="10" y="40" width="6" height="20" fill="var(--primary)" opacity="0.6" />
+                  <rect x="22" y="30" width="6" height="40" fill="var(--primary)" opacity="0.6" />
+                  <rect x="34" y="20" width="6" height="60" fill="var(--primary)" opacity="0.6" />
+                  <rect x="46" y="35" width="6" height="30" fill="var(--primary)" opacity="0.6" />
+                  <rect x="58" y="25" width="6" height="50" fill="var(--primary)" opacity="0.6" />
+                  <rect x="70" y="40" width="6" height="20" fill="var(--primary)" opacity="0.6" />
+                  <rect x="82" y="30" width="6" height="40" fill="var(--primary)" opacity="0.6" />
+                </svg>
               </div>
-            </div>
+              <div class="project-body">
+                <h3>openDAW Demos</h3>
+                <p>
+                  Interactive demos of the openDAW SDK — multi-track mixing, recording,
+                  automation, scriptable effects. A growing collection of examples for
+                  building DAWs in the browser.
+                </p>
+                <div class="project-links">
+                  <a href="https://opendaw-test.pages.dev/" target="_blank" rel="noopener">Live demo</a>
+                  <a href="https://github.com/naomiaro/opendaw-test" target="_blank" rel="noopener">Github</a>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
-      </header>
+      </section>
 
-      <main>
-        <section>
-          <h2>Blog</h2>
-          <a href="https://naomiaro.hashnode.dev"
-            >A collection of my thoughts.</a
-          >
-        </section>
-        <!-- <section>
-          <h2>Books</h2>
-          <a href="https://leanpub.com/masteringtonejs">Mastering Tone.js.</a>
-        </section> -->
-        <section>
-          <h2>Projects</h2>
-          <div class="row">
-            <div class="col s12 m12 l9">
-              <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="img/stem.png" />
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4"
-                    ><h3>Waveform Playlist</h3></span
-                  >
-                  <a href="https://www.npmjs.com/package/waveform-playlist"
-                    ><img
-                      src="https://img.shields.io/npm/dm/waveform-playlist.svg"
-                  /></a>
-                  <p class="flow-text">
-                    Multitrack Web Audio editor and player with canvas waveform
-                    preview. Set cues, fades and shift multiple tracks in time.
-                    Record audio tracks or provide audio annotations. Export
-                    your mix to AudioBuffer or WAV! Effects can be added using
-                    Tone.js. Project inspired by Audacity.
-                  </p>
-                </div>
-                <div class="card-action">
-                  <a
-                    href="https://naomiaro.github.io/waveform-playlist/"
-                    class="blue-text"
-                    >Project Site</a
-                  >
-                  <a
-                    href="https://github.com/naomiaro/waveform-playlist"
-                    class="blue-text"
-                    >View on Github</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
+      <section class="numbered-section" id="books">
+        <div class="container">
+          <header class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Books</h2>
+          </header>
+          <p>
+            <a href="https://masteringtonejs.com/" target="_blank" rel="noopener">Mastering Tone.js</a>
+            — a guide to interactive audio in the browser
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span class="footer-copy">© <span class="footer-year"></span> Naomi Aro</span>
+        <a
+          href="https://www.buymeacoffee.com/naomiaro"
+          target="_blank"
+          rel="noopener"
+          class="footer-support"
+        >
+          <span class="footer-support-icon" aria-hidden="true">☕</span>
+          <span>Support</span>
+        </a>
+      </div>
+    </footer>
+    <script type="module">
+      import { init as initAudio } from './js/audio.js';
+      import { renderNameStaff, highlight } from './js/notation.js';
 
+      document.addEventListener('DOMContentLoaded', () => {
+        const staffContainer = document.getElementById('name-staff');
+        renderNameStaff(staffContainer);
 
-          <div class="row">
-            <div class="col s12 m12 l9">
-              <div class="card">
-                <div class="card-content">
-                  <div class="card-image waves-effect waves-block waves-light">
-                    <blockquote class="embedly-card">
-                      <article>
-                        <a
-                          href="https://stories.fitzmuseum.cam.ac.uk/boat-race-trophies/"
-                          >SHOWING YOUR METTLE</a
-                        >
-                      </article>
-                      <p>
-                        A long form story from the Fitzwilliam Museum and Cambridge University Boat Club.
-                      </p>
-                    </blockquote>
-                    <blockquote class="embedly-card">
-                      <article>
-                        <a
-                          href="https://stories.fitzmuseum.cam.ac.uk/kangxi-vases-conservation/"
-                          >Kangxi Chinese vases Recovery from disaster</a>
-                      </article>
-                      <p>
-                        An incident in the Museum on Wednesday 25 January 2006 involving a member of the public resulted in damage to three huge oriental porcelain vases which had been on display for many decades.
-                      </p>
-                    </blockquote>
-                    <blockquote class="embedly-card">
-                      <article>
-                        <a
-                          href="https://udn.com/upf/the_invisibles/"
-                          >The Invisibles</a
-                        >
-                      </article>
-                      <p>
-                        The invisible agricultural army.
-                      </p>
-                    </blockquote>
-                  </div>
-                  <span class="card-title activator grey-text text-darken-4"
-                    ><h3>Mural - A tool for visual storytelling</h3></span
-                  >
-                  <p class="flow-text">
-                    Funding for Mural was provided in Round 3 of Google’s
-                    Digital News Initiative Prototype Fund. Mural helps you
-                    create web based, multimedia heavy stories quickly and
-                    easily.
-                  </p>
-                </div>
-                <div class="card-action">
-                  <a href="https://github.com/GetMural/Mural" class="blue-text"
-                    >View on Github</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => renderNameStaff(staffContainer), 150);
+        });
 
-    <script
-      async
-      src="https://cdn.embedly.com/widgets/platform.js"
-      charset="UTF-8"
-    ></script>
+        initAudio({
+          onLetterPlay: (letterIndex) => highlight(letterIndex),
+        });
+      });
+    </script>
+    <script>
+      document.querySelector('.footer-year').textContent = new Date().getFullYear();
+    </script>
+    <script>
+      (function () {
+        var nav = document.querySelector('.navbar');
+        var toggle = document.querySelector('.navbar-toggle');
+        var label = toggle && toggle.querySelector('.navbar-toggle-label');
+        if (!nav || !toggle || !label) return;
+
+        function setOpen(open) {
+          nav.classList.toggle('is-open', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          label.textContent = open ? 'CLOSE' : 'MENU';
+        }
+
+        toggle.addEventListener('click', function () {
+          setOpen(!nav.classList.contains('is-open'));
+        });
+
+        nav.querySelectorAll('.navbar-links a').forEach(function (a) {
+          a.addEventListener('click', function () { setOpen(false); });
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+            setOpen(false);
+            toggle.focus();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
