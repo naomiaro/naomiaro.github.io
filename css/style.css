@@ -138,11 +138,10 @@ button {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Centered content container for sections + hero. Navbar and footer
-   use their own full-width inner so the brand can hug the page edge. */
+/* Full-width content with side gutters. Everything anchors at the
+   gutter so the whole page reads as one left-aligned column. */
 .container {
-  max-width: var(--container-width);
-  margin: 0 auto;
+  width: 100%;
   padding: 0 var(--gutter);
 }
 
@@ -275,8 +274,6 @@ button {
   min-height: 80vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
   padding: 6rem 0 4rem;
   border-bottom: 1px solid var(--border);
   overflow: hidden;
@@ -347,14 +344,14 @@ button {
 }
 
 .hero-staff {
-  margin: 0 auto 1.5rem;
+  margin: 0 0 1.5rem;
   max-width: 520px;
   min-height: 140px;
 }
 
 .hero-name {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 0.15em;
@@ -510,7 +507,7 @@ button {
    ============================================ */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 500px));
   gap: 2rem;
 }
 
