@@ -27,14 +27,16 @@ export function renderNameStaff(container) {
 
   const { Renderer, Stave, StaveNote, Voice, Formatter } = VF;
   const width = container.clientWidth || 480;
-  const height = 100;
+  // 140px gives the lowest notes (A3, C4) room to render below the staff
+  // without clipping at the SVG's bottom edge.
+  const height = 140;
 
   const renderer = new Renderer(container, Renderer.Backends.SVG);
   renderer.resize(width, height);
   const ctx = renderer.getContext();
   ctx.setFont('Arial', 10);
 
-  const stave = new Stave(0, 10, width - 4);
+  const stave = new Stave(0, 20, width - 4);
   stave.addClef('treble').addTimeSignature('4/4');
   stave.setContext(ctx).draw();
 
