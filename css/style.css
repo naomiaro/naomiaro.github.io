@@ -95,6 +95,12 @@ h3 {
   text-shadow: 0 0 20px var(--glow-subtle);
 }
 
+h4 {
+  color: var(--heading-h4);
+  font-size: 1rem;
+  text-shadow: 0 0 15px var(--glow-subtle);
+}
+
 a {
   color: var(--primary);
   text-decoration: none;
