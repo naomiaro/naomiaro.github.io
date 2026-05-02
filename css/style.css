@@ -138,9 +138,10 @@ button {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Container helper */
+/* Container helper — full-width with side gutters; specific content
+   inside (e.g. .about-bio) caps its own readable line length. */
 .container {
-  max-width: var(--container-width);
+  width: 100%;
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
@@ -507,9 +508,8 @@ button {
    ============================================ */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 460px));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 500px));
   gap: 2rem;
-  justify-content: center;
 }
 
 .project-card {
