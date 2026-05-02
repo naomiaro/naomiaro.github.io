@@ -643,9 +643,13 @@ body.is-playing .scroll-progress {
   margin: 0 auto;
 }
 
-/* Default note color: warm amber on dark */
+/* Default note color: warm amber on dark.
+   Includes <rect> so barlines (drawn by VexFlow as rects) pick up the
+   color too — without this they render as the SVG default fill (black)
+   and disappear on the dark background. */
 .hero-staff path,
-.hero-staff text {
+.hero-staff text,
+.hero-staff rect {
   fill: var(--text-secondary);
   stroke: var(--text-secondary);
 }
