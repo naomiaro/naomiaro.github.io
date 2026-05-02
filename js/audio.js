@@ -140,8 +140,11 @@ function startFftLoop(eqBars) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reducedMotion) return;
 
+  let wasPlaying = false;
+
   function tick() {
-    if (started && analyser && Tone.getTransport().state === 'started') {
+    const isPlaying = started && analyser && Tone.getTransport().state === 'started';
+    if (isPlaying) {
       const values = analyser.getValue(); // Float32Array, dB scale (-100..0)
       eqBars.forEach((bar, i) => {
         const db = values[i] ?? -100;
@@ -149,7 +152,15 @@ function startFftLoop(eqBars) {
         bar.style.animation = 'none';
         bar.style.transform = `scaleY(${norm.toFixed(3)})`;
       });
+    } else if (wasPlaying) {
+      // Playback just stopped: clear inline overrides so the CSS
+      // pulse animation can resume from its idle state.
+      eqBars.forEach((bar) => {
+        bar.style.animation = '';
+        bar.style.transform = '';
+      });
     }
+    wasPlaying = isPlaying;
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
