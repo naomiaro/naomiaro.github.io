@@ -1,1 +1,7 @@
 .DS_Store
+
+# Local-only files (Claude Code artifacts, scratch screenshots)
+CLAUDE.md
+.playwright-mcp/
+/staff-*.png
+/wp-card-*.png
