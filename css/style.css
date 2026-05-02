@@ -1,0 +1,141 @@
+/* ============================================
+   DESIGN TOKENS — Berlin Underground / Night Vision
+   Ported from waveform-playlist's dark mode
+   ============================================ */
+:root {
+  /* Backgrounds */
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --navbar-bg: rgba(10, 10, 15, 0.95);
+
+  /* Primary accent — Ampelmännchen green */
+  --primary: #63c75f;
+  --primary-dark: #52b84e;
+  --primary-light: #78d074;
+
+  /* Text — warm amber, night-vision preserving */
+  --text: #d8c0a8;
+  --text-secondary: #a89078;
+
+  /* Headings — deep red with text-shadow glow */
+  --heading-h1: #d08070;
+  --heading-h2: #c87060;
+  --heading-h4: #c8a888;
+  --glow-strong: rgba(180, 60, 40, 0.5);
+  --glow-medium: rgba(200, 80, 50, 0.3);
+  --glow-subtle: rgba(180, 80, 60, 0.25);
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+
+  /* Type */
+  --font-base: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Layout */
+  --container-width: 1100px;
+  --gutter: 2rem;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-base);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-base);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  color: var(--heading-h1);
+  font-size: clamp(3rem, 8vw, 5rem);
+  letter-spacing: -0.03em;
+  text-shadow: 0 0 60px var(--glow-strong), 0 0 30px var(--glow-medium);
+}
+
+h2 {
+  color: var(--heading-h2);
+  font-size: 1.5rem;
+  text-shadow: 0 0 25px var(--glow-medium);
+}
+
+h3 {
+  color: var(--heading-h2);
+  font-size: 1.2rem;
+  text-shadow: 0 0 20px var(--glow-subtle);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--bg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Container helper */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
