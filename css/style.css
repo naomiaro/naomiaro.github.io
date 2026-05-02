@@ -34,7 +34,7 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Layout */
-  --container-width: 1280px;
+  --container-width: 1100px;
   --gutter: 2rem;
 }
 
@@ -507,8 +507,9 @@ button {
    ============================================ */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 460px));
   gap: 2rem;
+  justify-content: center;
 }
 
 .project-card {
