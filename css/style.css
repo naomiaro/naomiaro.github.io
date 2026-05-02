@@ -520,11 +520,6 @@ button {
   flex: 1;
 }
 
-.project-badge img {
-  display: block;
-  height: 20px;
-}
-
 .project-body p {
   color: var(--text);
   font-size: 0.95rem;
