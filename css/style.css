@@ -620,6 +620,48 @@ body.is-playing .scroll-progress {
 }
 
 /* ============================================
+   MARGINALIA (reading list)
+   ============================================ */
+.reading-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 720px;
+}
+
+.reading-title {
+  font-size: 1.05rem;
+  margin: 0 0 0.4rem;
+  color: var(--text);
+}
+
+.reading-meta {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-left: 0.25rem;
+}
+
+.reading-blurb {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.reading-blurb code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.1em 0.35em;
+  border: 1px solid var(--border);
+}
+
+/* ============================================
    LINK UNDERLINE GROW (in body content only)
    ============================================ */
 .numbered-section p a {
